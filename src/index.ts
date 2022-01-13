@@ -5,7 +5,7 @@ import  { merkleTree } from './merkleTree';
 const dotenv = require('dotenv');
 dotenv.config()
 
-const CHAIN_ID = 1;
+const CHAIN_ID = 5; //Goerli TesNetWork
 const provider = new providers.InfuraProvider(CHAIN_ID)
 const GWEI = BigNumber.from(10).pow(9)
 const ETHER = BigNumber.from(10).pow(18)
@@ -27,6 +27,16 @@ async function main() {
     })
 }
 
-//main();
-merkleTree();
+async function newBlockListener() {
+    
+    provider.on('block',async (blockNumber)=>{
+      console.log(blockNumber)
+      var blockInfo = await provider.getBlock(blockNumber)
+      console.log(blockInfo)
+    })
+}
+
+//main()
+//merkleTree()
+newBlockListener()
 
