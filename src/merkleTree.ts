@@ -9,7 +9,7 @@ let whitlistAddress= [
     "0x6458f2DA374471bF23C5eD4f03748B9a8ED8153C"
 ]
 
-let blackListAddress = "0xC542cFB99AfDb7A9e408B5cc6a1ac67372F506A";
+let blackListAddress = "0xcd9846ccb28f13e5fbd28c2bc4f2f8733ad9cc00";
 
 export function merkleTree(){
     //Create leafNotes
@@ -33,6 +33,15 @@ export function merkleTree(){
     //validate if address belong to tree
     var result = merkleTree.verify(hexaProof,blackListHash,rootHash)
     console.log(result)
+
+}
+
+export function merkleTreeV2(){
+
+
+    //Get Has Of BlackList
+    var blackListHash = keccak256(blackListAddress,7,'380000000000000000',1)
+    console.log(blackListHash);
 
 }
 

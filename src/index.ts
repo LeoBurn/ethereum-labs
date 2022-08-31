@@ -1,5 +1,6 @@
 import { BigNumber, providers, Wallet, utils } from "ethers";
-import  { merkleTree } from './merkleTree';
+const Web3 = require('Web3');
+import  { merkleTree, merkleTreeV2 } from './merkleTree';
 
 
 const dotenv = require('dotenv');
@@ -66,9 +67,18 @@ async function makeTransaction(address,amount) {
 
 }
 
+async function testSignature() {
+  var web3 = new Web3('https://mainnet.infura.io');
+  const result = await web3.eth.personal.sign("I want to participate to the C-01 raffle", '0xe863321Da1D3a7649A938F3240565E53035Ad82F', "password")
+  console.log(result);
+}
+
+
+
 
 //main()
-//merkleTree()
+merkleTreeV2()
 //newBlockListener()
-makeTransaction('0x2972915285416D0a923280f9786Fd85e6b50C17A','0.01');
+//makeTransaction('0x2972915285416D0a923280f9786Fd85e6b50C17A','0.01');
+//testSignature()
 
